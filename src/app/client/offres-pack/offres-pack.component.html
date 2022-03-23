@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="section-tittle text-center mb-70">
+                        <span>Nos Offres</span>
+                        <h2>Meilleurs offres avec le meilleurs prix</h2>
+                    </div> 
+  <div class="card-deck mb-3 text-center my-5">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">DomiSimple</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">40DT <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Domiciliation commerciale</li><br>
+          <li>Reception et tri du courrier</li><br>
+          <li>Notification de courrier</li><br>
+          <li><sup style="background-color:#FD8F5F;border-radius: 30%">Nouveau</sup><br><strong>Scan de l'enveloppe</strong></li>
+        </ul><br><br><br><br>
+        <button [routerLink]="['/register','domisimple']" type="button" class="btn btn-lg btn-block btn-outline-primary" *ngIf="route=='welcomeOffres'">Choisir</button>
+        <button [routerLink]="['/domicilate/register','domisimple']" type="button" class="btn btn-lg btn-block btn-outline-primary" *ngIf="route=='homeOffres'">Choisir</button>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">DomiPack</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">60DT <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Domiciliation commerciale</li><br>
+          <li>Reception et tri du courrier</li><br>
+          <li>Notification de courrier</li><br>
+          <li>Scan de l'enveloppe</li><br>
+          <li><sup style="background-color:#FD8F5F;border-radius: 30%">Nouveau</sup><br><strong>Réexpedition de courrier(timbres inclus)</strong></li>
+
+        </ul><br><br>
+        <button [routerLink]="['/register','domipack']" type="button" class="btn btn-lg btn-block btn-outline-primary" *ngIf="route=='welcomeOffres'">Choisir</button>
+        <button [routerLink]="['/domicilate/register','domipack']" type="button" class="btn btn-lg btn-block btn-outline-primary" *ngIf="route=='homeOffres'">Choisir</button>
+      </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">ScanPack</h4>
+      </div>
+      <div class="card-body">
+        <h1 class="card-title pricing-card-title">80DT <small class="text-muted">/ mo</small></h1>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Domiciliation commerciale</li><br>
+          <li>Reception et tri du courrier</li><br>
+          <li>Notification de courrier</li><br>
+          <li>Scan de l'enveloppe</li><br>
+          <li><sup style="background-color:#FD8F5F;border-radius: 30%">Nouveau</sup><br><strong>Scan du contenu</strong></li><br>
+          <li><strong>Gestion du courrier 100% en ligne</strong></li>
+
+        </ul>
+        <button [routerLink]="['/register','scanpack']" type="button" class="btn btn-lg btn-block btn-outline-primary" *ngIf="route=='welcomeOffres'">Choisir</button>
+        <button [routerLink]="['/domicilate/register','scanpack']" type="button" class="btn btn-lg btn-block btn-outline-primary" *ngIf="route=='homeOffres'">Choisir</button>
+      </div>
+    </div>
+  </div>
+</div>

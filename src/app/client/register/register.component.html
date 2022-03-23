@@ -1,0 +1,304 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2 id="heading">Domilicier votre entreprise</h2>
+                <p>Offre: {{offreName}}</p>
+                <form id="msform" [formGroup]="registerForm" (ngSubmit)="register()">
+                    <!-- progressbar -->
+                    <ul id="progressbar" *ngIf="route=='welcomeRegister'">
+                        <li *ngIf="route=='welcomeRegister'"><i class="fas fa-user-lock active" id="account"><strong>Compte</strong></i></li>
+                        <li *ngIf="route=='welcomeRegister'"><i id="personal" class="fa fa-user"><strong>Informations Personnelles</strong></i></li>
+                        <li><i *ngIf="route=='welcomeRegister'" id="adress" class="fa fa-map-marker"><strong>Adresse</strong></i></li>
+                        <li><i *ngIf="route=='homeRegister'" id="adress" class="fa fa-map-marker active"><strong>Adresse</strong></i></li>
+                        <li><i id="payment" class="fa fa-building"><strong>Informations Entreprise</strong></i></li>
+                        <li><i id="confirm" class="fa fa-credit-card"><strong>Paiement</strong></i></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> <!-- fieldsets -->
+                    <fieldset *ngIf="route=='welcomeRegister'">
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Compte:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">{{currentStep}} - {{steps}}</h2>
+                                </div>
+                            </div> 
+                            <label class="fieldlabels">Email: *</label> 
+                            <input type="email" id="email" name="email" placeholder="Email" formControlName="email"/>
+                            <div class="error" *ngIf="email.touched && email.invalid">
+                                <div *ngIf="email.errors.required" class="text-danger">Email obligatoire</div>
+                                <div *ngIf="email.errors.email" class="text-danger">Email incorrecte</div>
+                            </div>
+                             <label class="fieldlabels">Mot de passe: *</label> <input type="password" name="password" id="password" formControlName="password" placeholder="Mot de passe" /> 
+                             
+                             <div  class="error" *ngIf="password.touched && password.invalid">
+                                <div *ngIf="password.errors.required" class="text-danger">Mot de passe obligatoire</div>
+                                <div *ngIf="password.errors.minlength" class="text-danger">8 caractères au minimum</div>
+                            </div>
+                            <label class="fieldlabels">Confirmer Mot de passe: *</label>
+                            <input type="password" name="rpassword" placeholder="Confirmer Mot de passe" formControlName="rpassword" />
+                            <div class="error"  *ngIf="rpassword.touched && rpassword.invalid">
+                                <div *ngIf="rpassword.errors?.required" class="text-danger">Obligatoire</div>
+                            </div>
+                            <div style="margin-top: -15px;margin-bottom: 10px;" *ngIf="rpassword.valid && rpassword.value!=password.value" class="text-danger">
+                                Mot de passe n'est pas identique!
+                            </div>
+                        </div>
+                        <a routerLink="/login" style="color: #FD8F5F">Connectez-vous</a>
+                        <input type="button" name="next" class="next action-button"value="Suivant" [disabled]="email.invalid || password.invalid || rpassword.invalid || rpassword.value!=password.value"/>
+                    </fieldset>
+                    <fieldset *ngIf="route=='welcomeRegister'">
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Code de confirmation</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">{{currentStep}} - {{steps}}</h2>
+                                </div>
+                            </div>
+                            <label class="fieldlabels">Veuillez saisir le code reçu sur votre email: *</label> 
+                            <input type="text" id="code_confirmation" name="code de confirmation" placeholder="1234" name="code_confirmation" formControlName="code_confirmation" autofocus/>
+                            <div class="error"  *ngIf="code_confirmation.touched && code_confirmation.invalid">
+                                <div *ngIf="code_confirmation.errors.required" class="text-danger">Obligatoire</div>
+                                <div *ngIf="code_confirmation.errors.minlength" class="text-danger">4 chiffres SVP!</div>
+                                <div *ngIf="code_confirmation.errors.maxlength" class="text-danger">4 chiffres SVP!</div>
+                            </div>
+                             <br><br>
+                            
+                        </div>
+                         <input type="button" name="renvoyer_code" class="renvoyer_code action-button" value="Renvoyer" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="Precedent" />
+                    </fieldset>
+                    <fieldset *ngIf="route=='welcomeRegister'">
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Informations personnelles:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">{{currentStep}} - {{steps}}</h2>
+                                </div>
+                            </div> 
+                           
+                                <div style="text-align: center;">
+                              <label for="homme" class="radio">
+                                <input  type="radio" name="gender" id="homme" value="homme" class="hidden" checked/>
+                                <span class="label"></span>Mr
+                              </label>
+                              
+                              <label for="femme" class="radio">
+                                <input type="radio" name="gender" id="femme" value="femme" class="hidden" />
+                                <span class="label"></span>M
+                              </label>  
+                           </div>
+                           
+                            
+                            <label class="fieldlabels">Nom: *</label> 
+                            <input type="text" name="nom" placeholder="Nom" formControlName="nom"/> 
+                            <div class="error"  *ngIf="nom.touched && nom.invalid">
+                                <div *ngIf="nom.errors.required" class="text-danger">Obligatoire</div>
+                            </div>
+                            <label class="fieldlabels">Prénom: *</label> 
+                            <input type="text" name="prenom" placeholder="Prénom" formControlName="prenom"/> 
+                            <div class="error"  *ngIf="prenom.touched && prenom.invalid">
+                                <div *ngIf="prenom.errors.required" class="text-danger">Obligatoire</div>
+                            </div>
+                            <label class="fieldlabels">Télephone: *</label> 
+                            <input type="text" name="telephone" placeholder="Telephone" formControlName="telephone"/>
+                            <div class="error"  *ngIf="telephone.touched && telephone.invalid">
+                                <div *ngIf="telephone.errors.required" class="text-danger">Obligatoire</div>
+                            </div> 
+                            
+                            <label class="fieldlabels">Adresse: *</label> 
+                            <input type="text" name="adresse" placeholder="Adresse" formControlName="adresse"/>
+                            <div class="error"  *ngIf="adresse.touched && adresse.invalid">
+                                <div *ngIf="adresse.errors.required" class="text-danger">Obligatoire</div>
+                            </div>
+                            <label class="fieldlabels">Ville: *</label> 
+                            <input type="text" name="ville" placeholder="Ville" formControlName="ville"/>
+                            <div class="error"  *ngIf="ville.touched && ville.invalid">
+                                <div *ngIf="ville.errors.required" class="text-danger">Obligatoire</div>
+                            </div>
+                            
+                             <label class="fieldlabels">Pays: *</label> 
+                            <div class="select">
+                              <select name="pays" id="pays">
+                                <option *ngFor="let country of countries" value="{{country.coutry}}">{{country.country}}</option>
+                              </select>
+                            </div>
+                        </div>
+                        <input type="button" name="next" class="next action-button" value="Suivant"  [disabled]="nom.invalid ||prenom.invalid || adresse.invalid || telephone.invalid || ville.invalid"/>
+                        
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Choisir une adresse:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">{{currentStep}} - {{steps}}</h2>
+                                </div>
+                            </div><br>
+                            <div style="text-align: center;"> 
+                            <input 
+                              type="radio" name="adresse" 
+                              id="adr1" class="input-hidden" value="Avenue Habib Bourguiba, Tunis" checked />
+                            <label for="adr1" style="margin-right: 10%;">
+                            
+                              <img 
+                                src="../../../assets/acceuilClient/register/img/adr1.jpg" 
+                                alt="Avenue Habib Bourguiba, Tunis" /><br><br>
+                            <figcaption>Avenue Habib Bourguiba, Tunis</figcaption>
+                            
+                            </label>
+                            
+                            <input 
+                              type="radio" name="adresse"
+                              id="adr2" class="input-hidden" value="Centre Urbain Nord, Tunis" />
+                            <label for="adr2" >
+                              <img 
+                                src="../../../assets/acceuilClient/register/img/adr2.jpg" 
+                                alt="Centre Urbain Nord, Tunis" /><br><br>
+                                <figcaption>Centre Urbain Nord, Tunis</figcaption>
+                            </label>
+                            
+                           </div> 
+                           <br><br>
+                       </div>
+                           <input type="button" name="next" class="next action-button" value="Suivant" /> <input type="button" name="previous" class="previous action-button-previous" value="Precedent" *ngIf="route=='welcomeRegister'"/>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Informations Entreprise:</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">{{currentStep}} - {{steps}}</h2>
+                                </div>
+                            </div>
+                            <label class="fieldlabels">Nom Entreprise: *</label> 
+                            <input type="text" name="nom_entreprise" placeholder="Nom Entreprise" id="nom_entreprise" formControlName="nom_entreprise"/>
+                            <div class="error"  *ngIf="nom_entreprise.touched && nom_entreprise.invalid">
+                                <div *ngIf="nom_entreprise.errors.required" class="text-danger">Obligatoire</div>
+                            </div> 
+                            <label class="fieldlabels">Forme juridique: *</label> 
+                            <select name="forme_juridique" id="forme_juridique">
+                                <option *ngFor="let forme of formeJuridique" value="{{forme.type}}">{{forme.type}}</option>
+                              </select>
+                            
+                            <label class="fieldlabels">Capital: *</label> 
+                            <input type="text" name="capital_entreprise" placeholder="Capital" id="capital_entreprise" formControlName="capital_entreprise"/>
+                            <div class="error"  *ngIf="capital_entreprise.touched && capital_entreprise.invalid">
+                                <div *ngIf="capital_entreprise.errors.required" class="text-danger">Obligatoire</div>
+                                <div *ngIf="capital_entreprise.errors.pattern" class="text-danger">capital invalide</div>
+                            </div>
+                            <label class="fieldlabels">Domaine d'activité: *</label> 
+                            <input type="text" name="domaine_activite_entreprise" placeholder="Domaine d'activité" id="domaine_activite_entreprise" formControlName="domaine_activite_entreprise"/>
+                            <div class="error"  *ngIf="domaine_activite_entreprise.touched && domaine_activite_entreprise.invalid">
+                                <div *ngIf="domaine_activite_entreprise.errors.required" class="text-danger">Obligatoire</div>
+                            </div> 
+                            <label class="fieldlabels">Adresse: *</label> 
+                            <input type="text" name="adresse_entreprise" placeholder="Adresse" id="adresse_entreprise" formControlName="adresse_entreprise"/>
+                            <div class="error"  *ngIf="adresse_entreprise.touched && adresse_entreprise.invalid">
+                                <div *ngIf="adresse_entreprise.errors.required" class="text-danger">Obligatoire</div>
+                            </div> 
+                            <label class="fieldlabels">Code postal: *</label> 
+                            <input type="text" name="code_postal" placeholder="Code postal" id="code_postal" formControlName="code_postal"/>
+                            <div class="error"  *ngIf="code_postal.touched && code_postal.invalid">
+                                <div *ngIf="code_postal.errors.required" class="text-danger">Obligatoire</div>
+                                <div *ngIf="code_postal.errors.pattern" class="text-danger">code postal invalide</div>
+                                <div *ngIf="code_postal.errors.maxlength" class="text-danger">5 chiffres au maxinmum</div>
+                                <div *ngIf="code_postal.errors.minlength" class="text-danger">4 chiffres au minimum</div>
+                                
+
+                            </div> 
+                            <label class="fieldlabels">Ville: *</label> 
+                            <input type="text" name="ville_entreprise" placeholder="Ville" id="ville_entreprise" formControlName="ville_entreprise"/>
+                            <div class="error"  *ngIf="ville_entreprise.touched && ville_entreprise.invalid">
+                                <div *ngIf="ville_entreprise.errors.required" class="text-danger">Obligatoire</div>
+                            </div> 
+                            <label class="fieldlabels">Pays: *</label> 
+                            <div class="select">
+                              <select name="pays_entreprise" id="pays">
+                                <option *ngFor="let country of countries" value="{{country.coutry}}">{{country.country}}</option>
+                              </select>
+                            </div>
+                            <label class="fieldlabels">Gérant: *</label> 
+                            <input type="text" name="gerant_entreprise" placeholder="Gérant" id="gerant_entreprise" formControlName="gerant_entreprise"/>
+                            <div class="error"  *ngIf="gerant_entreprise.touched && gerant_entreprise.invalid">
+                                <div *ngIf="gerant_entreprise.errors.required" class="text-danger">Obligatoire</div>
+                            </div> 
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Suivant" [disabled]="nom_entreprise.invalid || adresse_entreprise.invalid || gerant_entreprise.invalid || ville_entreprise.invalid || domaine_activite_entreprise.invalid || capital_entreprise.invalid || code_postal.invalid" /> 
+                        <input type="button" name="previous" class="previous action-button-previous" value="Precedent" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Paiement</h2>
+                                </div>
+                                <div class="col-5">
+                                    <h2 class="steps">{{currentStep}} - {{steps}}</h2>
+                                </div>
+                            </div>
+                            <h2 class="purple-text text-center"><strong>Montant: {{offrePrice}} DT</strong></h2> <br>
+                            <div style="text-align: center;"> 
+                            <input 
+                              type="radio" name="carte_bancaire" 
+                              id="visacard" class="input-hidden" value="visacard" checked />
+                            <label for="visacard" style="margin-right: 10%;">
+                              <img 
+                                src="../../../assets/acceuilClient/register/img/visacard.png" 
+                                alt="Visa Card" /><br>           
+                            </label>                         
+                            <input 
+                              type="radio" name="carte_bancaire"
+                              id="mastercard" class="input-hidden" value="mastercard" />
+                            <label for="mastercard" >
+                              <img 
+                                src="../../../assets/acceuilClient/register/img/mastercard.png" 
+                                alt="Master Card" /><br>
+                            </label>                        
+                           </div> <br>
+                            <label class="fieldlabels">Numero de carte: *</label> 
+                            <input type="text" id="numero_carte" placeholder="Numero de carte:" name="numero_carte" formControlName="numero_carte" /> 
+                            <div class="error"  *ngIf="numero_carte.touched && numero_carte.invalid">
+                                <div *ngIf="numero_carte.errors.required" class="text-danger">Obligatoire</div>
+                                <div *ngIf="numero_carte.errors.minlength" class="text-danger">16 chiffres SVP!</div>
+                                <div *ngIf="numero_carte.errors.maxlength" class="text-danger">16 chiffres SVP!</div>
+                                <div *ngIf="numero_carte.errors.pattern" class="text-danger">numero de carte invalide</div>
+                            </div>
+                            <label class="fieldlabels">Date D'expiration: *</label> 
+                            <input type="date" id="date_expiration" name="date_expiration" formControlName="date_expiration" />
+                             <div class="error"  *ngIf="date_expiration.touched && date_expiration.invalid">
+                                <div *ngIf="date_expiration.errors.required" class="text-danger">Obligatoire</div>
+                            </div>
+                            <label class="fieldlabels">Code: *</label> 
+                            <input type="text" name="code_carte" placeholder="12345678" name="code_carte" formControlName="code_carte" />
+                            <div class="error"  *ngIf="code_carte.touched && code_carte.invalid">
+                                <div *ngIf="code_carte.errors.required" class="text-danger">Obligatoire</div>
+                                <div *ngIf="code_carte.errors.minlength" class="text-danger">8 chiffres SVP!</div>
+                                <div *ngIf="code_carte.errors.maxlength" class="text-danger">8 chiffres SVP!</div>
+                                <div *ngIf="code_carte.errors.pattern" class="text-danger">code de carte invalide</div>
+                            </div>
+                             <br><br>
+                            
+                        </div>
+                         <a routerLink="/login">
+                            <input type="button" name="next" class="next action-button" value="Envoyer" [disabled]="numero_carte.invalid ||code_carte.invalid || date_expiration.invalid"/>
+                        </a>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Precedent" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="page-wrapper">
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-lg-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div class="user-photo">
+                                    <a href="#">
+                                        <img src="{{client.photo}}" alt="User Photo">
+                                        <span class="user-photo-action">Modifier la photo</span>
+                                    </a>
+                                </div><!-- /.user-photo -->
+                            </div><!-- /.widget -->
+                            <div class="widget" style="text-align: center">
+                                <p>{{client.firstname}} {{client.lastname}}</p>
+                                <p>{{client.email}}</p>
+                            </div>
+                            <div class="widget">
+                                <ul class="menu-advanced">
+                                    <li id="generalInfo" class="menu-list active-item"><a ><i class="fa fa-user"></i>Editer Profil</a></li>
+                                    <li id="passwordInfo" class="menu-list"><a ><i class="fa fa-key"></i> Mot de passe</a></li>
+                                    <li id="payementInfo" class="menu-list"><a ><i class="fa fa-credit-card"></i> Paiement</a></li>
+                                    <li class="menu-list" (click)="logOut()"><a ><i class="fa fa-power-off"></i> Déconnexion</a></li>
+                                </ul>
+                            </div><!-- /.widget -->
+                        </div><!-- /.sidebar -->
+                    </div><!-- /.col-* -->
+
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="page-title"><h1>{{client.firstname}} {{client.lastname}}</h1>
+                            </div><!-- /.page-title -->
+                        <div class="content">
+                            <form id="msform">
+                            <fieldset class="generalInfo">
+                                
+                                    <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Informations de contact
+
+                                            <a type="submit" class="btn btn-primary btn-xs pull-right">Enregistrer</a>
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <label>Nom</label>
+                                                <input type="text" name="lastname"  formControlName="lastname" class="form-control" value="{{client.lastname}}"/>
+                                                <!--<div class="error"  *ngIf="lastname.touched && lastname.invalid">
+                                                    <div *ngIf="lastname.errors.required" class="text-danger">Obligatoire</div>
+                                                </div>-->
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>Prénom</label>
+                                                <input type="text" name="firstname"  formControlName="firstname" class="form-control" value="{{client.firstname}}"/>
+                                                <!--<div class="error"  *ngIf="firstname.touched && firstname.invalid">
+                                                    <div *ngIf="firstname.errors.required" class="text-danger">Obligatoire</div>
+                                                </div>-->
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label>Phone</label>
+                                                <input type="text" class="form-control" value="{{client.phone}}" name="phone"  formControlName="phone"/>
+                                                <!--<div class="error"  *ngIf="phone.touched && phone.invalid">
+                                                    <div *ngIf="phone.errors.required" class="text-danger">Obligatoire</div>
+                                                </div>-->
+                                            </div><!-- /.form-group -->
+                                        </div><!-- /.row -->
+                                    </div>
+                                
+                                
+                                <div class="background-white p20 mb30">
+                                    <h3 class="page-title">
+                                        Addresse
+
+                                        <a href="#" class="btn btn-primary btn-xs pull-right">Enregistrer</a>
+                                    </h3>
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label>Adresse</label>
+                                            <input type="text" class="form-control" value="{{client.adress}}">
+                                        </div><!-- /.form-group -->
+
+                                        <div class="form-group col-sm-6">
+                                            <label>Ville</label>
+                                            <input type="text" class="form-control" value="{{client.city}}">
+                                        </div><!-- /.form-group -->
+
+                                        <div class="form-group col-sm-6">
+                                            <label>Pays</label>
+                                            <input type="text" class="form-control" value="{{client.country}}">
+                                        </div><!-- /.form-group -->
+
+
+                                        <div class="form-group col-sm-3">
+                                            <label>Code postal</label>
+                                            <input type="text" class="form-control" value="{{client.zip}}">
+                                        </div><!-- /.form-group -->
+                                    </div><!-- /.row -->
+                                </div>
+                            
+                            </fieldset>
+                                <fieldset class="passwordInfo">
+                                    <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Mot de passe
+
+                                            <a href="#" class="btn btn-primary btn-xs pull-right">Enregistrer</a>
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-12">
+                                                <label>Mot de passe actuel</label>
+                                                <input type="password" class="form-control">
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>Nouveau mot de passe</label>
+                                                <input type="password" class="form-control" >
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>Répeter</label>
+                                                <input type="password" class="form-control">
+                                            </div><!-- /.form-group -->
+                                        </div><!-- /.row -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="payementInfo">
+                                    <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Paiement
+
+                                            <a href="#" class="btn btn-primary btn-xs pull-right">Enregistrer</a>
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-12">
+                                                <label>Numero de la carte</label>
+                                                <input type="text" class="form-control" value="{{client.cardNumber}}">
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>date d'expiration</label>
+                                                <input type="text" class="form-control" value="{{client.expiration}}">
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>code</label>
+                                                <input type="text" class="form-control" value="{{client.cardCode}}">
+                                            </div><!-- /.form-group -->
+                                        </div><!-- /.row -->
+                                    </div>
+                                </fieldset>
+                            </form><!-- /Form -->
+                        </div><!-- /.content -->
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+</div>

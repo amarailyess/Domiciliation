@@ -1,0 +1,171 @@
+
+<div class="page-wrapper">
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-lg-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div class="user-photo">
+                                    <a href="#">
+                                        <img src="{{entreprise.logo}}" alt="User Photo">
+                                        <span class="user-photo-action">Modifier le logo</span>
+                                    </a>
+                                </div><!-- /.user-photo -->
+                            </div><!-- /.widget -->
+                            <div class="widget" style="text-align: center">
+                                <p>{{entreprise.name}}</p>
+                                <p>{{entreprise.tunidomAdress}}</p>
+                            </div>
+                            <div class="widget">
+                                <ul class="menu-advanced">
+                                    <li id="generalInfo" class="menu-list active-item"><a ><i class="fa fa-info-circle"></i>Géneral</a></li>
+                                    <li id="adressInfo" class="menu-list"><a ><i class="fa fa-map-marker-alt"></i> Adresse Tunidom</a></li>
+                                    <li id="offreInfo" class="menu-list"><a ><i class="fa fa-certificate"></i> Offre</a></li>
+                                    
+                                </ul>
+                            </div><!-- /.widget -->
+                        </div><!-- /.sidebar -->
+                    </div><!-- /.col-* -->
+
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="page-title"><h1>{{entreprise.name}}</h1>
+                            </div><!-- /.page-title -->
+                        <div class="content">
+                            <form id="msform">
+                                <fieldset class="generalInfo">
+                                    <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Informations géneral
+
+                                            <a href="#" class="btn btn-primary btn-xs pull-right">Enregistrer</a>
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <label>Nom de l'entreprise</label>
+                                                <input type="text" class="form-control" value="{{entreprise.name}}">
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>Forme juridique</label>
+                                                <input type="text" class="form-control" value="{{entreprise.legal_forme}}">
+                                            </div><!-- /.form-group -->
+
+                                             <div class="form-group col-sm-6">
+                                                <label>Capital</label>
+                                                <input type="text" class="form-control" value="{{entreprise.capital}}">
+                                            </div><!--/.form-group -->
+                                            <div class="form-group col-sm-6">
+                                                <label>Gérant</label>
+                                                <input type="text" class="form-control" value="{{entreprise.manager}}">
+                                            </div><!--/.form-group -->
+                                            <div class="form-group col-sm-6">
+                                                <label>Domaine d'activité</label>
+                                                <input type="text" class="form-control" value="{{entreprise.activity}}">
+                                            </div><!-- /.form-group -->
+                                        </div><!-- /.row -->
+                                    </div>
+
+                                    <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Addresse
+
+                                            <a href="#" class="btn btn-primary btn-xs pull-right">Enregistrer</a>
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-6">
+                                                <label>Adresse</label>
+                                                <input type="text" class="form-control" value="{{entreprise.adress}}">
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>Ville</label>
+                                                <input type="text" class="form-control" value="{{entreprise.city}}">
+                                            </div><!-- /.form-group -->
+
+                                            <div class="form-group col-sm-6">
+                                                <label>Pays</label>
+                                                <input type="text" class="form-control" value="{{entreprise.country}}">
+                                            </div><!-- /.form-group -->
+
+
+                                            <div class="form-group col-sm-3">
+                                                <label>Code postal</label>
+                                                <input type="text" class="form-control" value="{{entreprise.zip}}">
+                                            </div><!-- /.form-group -->
+                                        </div><!-- /.row -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="adressInfo">
+                                    <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Adresse Tunidom
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-12" style="text-align:center">
+                                                <div class="page-title">
+                                                 <h1>{{entreprise.tunidomAdress}}</h1></div>
+                                                 <button style="color: #fff" 
+                                                  class="btn btn-primary btn-xs pull-center showHide">Modifier</button>
+                                            </div><!-- /.form-group -->
+                                        </div>
+                                        <div id="updateAdress" class="row" style="display: none">
+                                            <div class="form-group col-sm-12">
+                                                <label>Nouvelle Adresse:</label>
+                                                <select class="form-control bs-select-hidden" title="Select Location"><option class="bs-title-option" value="">Coisir une adresse</option>
+                                                    <option>Tunis Centre ville</option>
+                                                    <option>Centre Urbain Nord Tunis</option>
+                                                    
+                                                </select>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group col-sm-12">
+                                            <button style="color: #fff" class="btn btn-primary btn-xs pull-right">Enregistrer</button>
+                                            </div>
+                                        </div><!-- /.row -->
+                                    </div>
+                                </fieldset>
+                                <fieldset class="offreInfo">
+                                     <div class="background-white p20 mb30">
+                                        <h3 class="page-title">
+                                            Offre actuel
+                                        </h3>
+
+                                        <div class="row">
+                                            <div class="form-group col-sm-12" style="text-align:center">
+                                                <div class="page-title">
+                                                 <h1><button id="myBtn" style="cursor: pointer;">{{entreprise.offer}}</button></h1></div>
+                                                 <button style="color: #fff" 
+                                                  class="btn btn-primary btn-xs pull-center showHideOffre">Modifier</button>
+                                            </div><!-- /.form-group -->
+                                            
+                                        </div>
+                                        
+
+                                        <div id="updateOffre" class="row" style="display: none">
+                                            <div class="form-group col-sm-12">
+                                                <label>Nouvelle Offre:</label>
+                                                <select class="form-control bs-select-hidden" title="Select Location"><option class="bs-title-option" value="">Coisir un offre</option>
+                                                    <option>Domisimple</option>
+                                                    <option>DomiPack</option>
+                                                    <option>ScanPack</option>
+                                                    
+                                                </select>
+                                            </div><!-- /.form-group -->
+                                            <div class="form-group col-sm-12">
+                                            <button style="color: #fff" class="btn btn-primary btn-xs pull-right">Enregistrer</button>
+                                            </div>
+                                        </div><!-- /.row -->
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div><!-- /.content -->
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+</div>

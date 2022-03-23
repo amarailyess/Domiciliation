@@ -1,0 +1,52 @@
+
+        <div id="myModal" class="modal">
+            <div class="container">
+            <div class="row">
+                <div class="col-md-6" *ngFor="let entreprise of entreprises">
+                    <div class="containerWrap" id="{{entreprise.id}}">
+                      <img  src="{{entreprise.logo}}" class="image" style="width:100%">   
+                      <div class="bottom">
+                        <div class="text">{{entreprise.name}}</div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+          <!-- HEADER -->
+          <div *ngIf="choice=='ok'">
+
+        <app-header></app-header>
+                <!-- END HEADER  -->
+        <!-- PAGE CONTENT-->
+            <app-lettre *ngIf="route=='letter'"></app-lettre>   
+
+            <app-documents *ngIf="route=='documents'"></app-documents> 
+
+            <app-domiciliate-entreprise *ngIf="route=='domicilate'"></app-domiciliate-entreprise>  
+
+            <app-entreprise-profile *ngIf="route=='entreprise-profile'"></app-entreprise-profile> 
+
+            <app-personnal-profile *ngIf="route=='personal-profile'"></app-personnal-profile> 
+            
+            <app-statutory *ngIf="route=='statutory'"></app-statutory> 
+            
+
+
+
+        <!-- END PAGE CONTENT-->
+         <!-- COPYRIGHT-->
+            <section class="p-t-60 p-b-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                                <p>Copyright © 2020 Ilyess Amara. All rights reserved.By <a >Ilyess</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END COPYRIGHT-->
+   </div>
+

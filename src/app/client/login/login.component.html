@@ -1,0 +1,64 @@
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+
+				<form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="loginClient()">
+					<button routerLink="/" style="background-color: #FD8F5F;height: 10%;width: 15%;border-radius:7%"><i class="fas fa-arrow-left"></i></button>
+					<span class="login100-form-title p-b-43">
+						Se connecter
+					</span>
+					
+					<div class="wrap-input100 validate-input">
+						<input class="input100" type="text" id="email" name="email" formControlName="email" placeholder="Email">
+						<div *ngIf="email.touched && email.invalid">
+			              <small *ngIf="email.errors.required" class="text-danger">Email obligatoire</small>
+			              <small *ngIf="email.errors.email" class="text-danger">Email incorrecte</small>
+    					</div>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" >
+						<input class="input100" type="password" name="password" placeholder="Mot de passe" id="password" formControlName="password">
+						<div *ngIf="password.touched && password.invalid">
+		              <small *ngIf="password.errors.required" class="text-danger">Mot de passe obligatoire</small>
+		              <small *ngIf="password.errors.minlength" class="text-danger">8 caractères au minimum</small>
+		    			</div>
+						
+					</div>
+
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								Rester connecté
+							</label>
+						</div>
+
+						<div>
+							<a href="#" class="txt1">
+								Mot de passe oublié?
+							</a>
+						</div>
+					</div>
+			
+
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn" style="background-color: #FD8F5F" [disabled]="loginForm.invalid">
+							connexion
+						</button>
+						
+							<a style="margin-top: 10px;font-size: 16px;"routerLink="/offres" class="txt1">
+								Créer un compte
+							</a>
+						
+					</div>
+				</form>
+				<div class="login100-more" style="background-image: url('assets/acceuilClient/home/img/hero/h1_hero1.png');">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+  

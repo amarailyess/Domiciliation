@@ -1,0 +1,66 @@
+<div class="alert alert-warning" *ngIf="letters.length==0" style="text-align: center">Aucune lettre pour votre entreprise</div>
+<div class="album py-5 bg-light" *ngIf="letters.length>0">
+    <div class="container"  >
+         <!-- The Modal -->
+                <div id="myModalLetter" class="modalLetter">
+                  <span class="close">&times;</span>
+                  <img class="modal-contentLetter">
+                  <div id="caption"></div>
+                </div>
+    
+        <ul class="row">
+          <li *ngFor="let letter of letters" class="col-md-6">
+        
+            <div class="container1">
+              <img id="{{letter.id}}" src="{{letter.path}}" alt="letter" class="image" style="width:100%">
+              
+              <div class="bottom">
+                <div class="text">
+                    Le {{letter.date}}.<small class="text">{{letter.time}}</small>        
+                </div>
+              </div>
+              <div class="top">
+                 <button class="status statusOk {{letter.id}}" title="Lue" *ngIf="letter.seen=='yes'"><i class="fas fa-eye"></i></button>
+
+                 <button class="status statusNotok {{letter.id}}" title="Non lu" *ngIf="letter.seen=='no'"><i class="fas fa-eye-slash"></i></button>
+
+                <div class="delivred" title="à la livraison" *ngIf="letter.state=='delivred'"><i class="fas fa-truck"></i></div>
+
+                <div class="ready" title="pret à récuperer" *ngIf="letter.state=='ready'"><i class="fas fa-share"></i></div>
+                
+                <div class="recovered" title="récuperé" *ngIf="letter.state=='recovered'"><i class="fas fa-share"></i></div>
+              </div>
+              <div class="middle">
+                <button name="{{letter.id}}" class="action openLetterImage" title="afficher"><i class="fas fa-eye"></i></button>
+                <button  class="action openLetterFile" name="{{letter.id}}" title="voir le courrier en pdf" *ngIf="entreprise.offer=='scanpack'" (click)="openFile(letter.id)"><i class="far fa-file-pdf"></i></button>
+                <button class="action" title="supprimer"><i class="far fa-trash-alt"></i></button>
+              </div>
+            </div>
+        
+      </li>
+    </ul>
+      <!--<div class="col-md-6">
+            <div class="container1">
+              <img id="7" src="assets/dashboardClient/images/bg-title-02.jpg" alt="Avatar" class="image" style="width:100%">
+             
+              <div class="bottom">
+                <div class="text">
+                    Le 19-09-2020.<small class="text">20:25</small>        
+                </div>
+              </div>
+              <div class="top">
+                 <button class="status statusNotok 2" title="Non lu"><i class="fas fa-eye-slash"></i></button>
+                <div class="delivred " title="Pret à etre recuperé"><i class="fas fa-truck"></i></div>
+              </div>
+              <div class="middle">
+                <button name="7" class="action" title="afficher"><i class="fas fa-eye"></i></button>
+                <button name="7" class="action" title="voir le courrier en pdf"><i class="far fa-file-pdf"></i></button>
+                <button name="7" class="action" title="supprimer"><i class="far fa-trash-alt"></i></button>
+              </div>
+            </div>
+        </div>-->
+    
+        
+      
+    </div>
+  </div>

@@ -1,0 +1,391 @@
+ 
+ <!-- HEADER DESKTOP-->
+        <header class="header-desktop3 d-none d-lg-block" >
+            <div class="section__content section__content--p35">
+                <div class="header3-wrap">
+                    <div class="header__logo" >
+                        <div class="header__logo">
+                        <div class="account-wrap" >
+                            <div class="account-item account-item--style2 clearfix js-item-menu" >
+                                    
+                                 
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">
+                                   
+                                    <span class="acc">{{currentEntreprise.name}}</span></a>
+                                </div>
+                                <div class="entreprise-dropdown js-dropdown">
+                                    
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item" *ngFor="let entreprise of entreprises">
+                                            <a (click)="changeCurrentEntreprise(entreprise.id)">
+                                                <i class="fas fa-building"></i>{{entreprise.name}}</a>
+                                        </div>
+                                         
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="header__navbar">
+                        <ul class="list-unstyled">
+                            <li class="has-sub">
+                                <a >
+                                    <i class="far fa-envelope"></i>
+                                    <span class="bot-line"></span>Boite aux lettres
+                                </a>
+                                 <ul class="header3-sub-list list-unstyled">
+                                    <li *ngIf="entreprises.length>1">
+                                        <a routerLink="/letters/all">Tous les courriers</a>
+                                    </li>
+                                    <li *ngFor="let entreprise of entreprises">
+                                        <a [routerLink]="['/letters',entreprise.id]">{{entreprise.name}}</a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
+                            <li>
+                                <a routerLink="/documents">
+                                    <i class="far fa-folder-open"></i>
+                                    <span class="bot-line"></span>Mes Documents</a>
+                            </li>
+                           
+                            <!--<li class="has-sub">
+                                <a routerLink="statutory">
+                                    <i class="far fa-copy"></i>
+                                    <span class="bot-line"></span>Modification statutiare</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a routerLink="/statutory">PV</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/statutory">Status</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/statutory">PDG</a>
+                                    </li>
+                                </ul>
+                            </li>-->
+                             <li class="has-sub">
+                                <a routerLink="/domicilate/offres">
+                                    <i class="far fa-plus-square"></i>
+                                    
+                                    <span class="bot-line"></span>Ajouter une entreprise</a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a routerLink="/domicilate/offres">Domicilier une entreprise</a>
+                                    </li>
+                                    <li>
+                                        <a >Créer une entreprise</a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header__tool">
+                        <div class="header-button-item has-noti js-item-menu">
+                            <i class="zmdi zmdi-notifications"></i>
+                            <div class="account-dropdown notifi-dropdown--no-bor js-dropdown">
+                                <div class="notifi__title">
+                                    <p>You have 3 Notifications</p>
+                                </div>
+                                <div class="notifi__item">
+                                    <div class="bg-c1 img-cir img-40">
+                                        <i class="zmdi zmdi-email-open"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>You got a email notification</p>
+                                        <span class="date">April 12, 2018 06:50</span>
+                                    </div>
+                                </div>
+                                <div class="notifi__item">
+                                    <div class="bg-c2 img-cir img-40">
+                                        <i class="zmdi zmdi-account-box"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>Your account has been blocked</p>
+                                        <span class="date">April 12, 2018 06:50</span>
+                                    </div>
+                                </div>
+                                <div class="notifi__item">
+                                    <div class="bg-c3 img-cir img-40">
+                                        <i class="zmdi zmdi-file-text"></i>
+                                    </div>
+                                    <div class="content">
+                                        <p>You got a new file</p>
+                                        <span class="date">April 12, 2018 06:50</span>
+                                    </div>
+                                </div>
+                                <div class="notifi__footer">
+                                    <a href="#">All notifications</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="account-wrap">
+                            <div class="account-item account-item--style2 clearfix js-item-menu">
+                                    
+                                 
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">
+                                   
+                                    <span class="acc">{{currentClient.firstname}}</span></a>
+                                </div>
+                                <div class="account-dropdown js-dropdown">
+                                    <div class="info clearfix">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img  />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="name">
+                                                
+                                            </h5><br>
+                                            <span class="email">{{currentClient.email}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a routerLink="/personal-profile">
+                                                <i class="zmdi zmdi-account"></i>Profil Personnel</a>
+                                        </div>
+                                         <div class="account-dropdown__item">
+                                        <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="">
+                                <i class="fas fa-building"></i>Profil Entreprise</a>  
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li *ngFor="let entreprise of entreprises">
+                                    <a [routerLink]="['/entreprise-profile',entreprise.id]">{{entreprise.name}}</a>
+                                </li>
+                                
+                            </ul>  
+                        </li>
+                    </ul>
+                </div>
+                                    </div>
+                                    <div class="account-dropdown__footer">
+                                        <a (click)="logOut()">
+                                            <i class="zmdi zmdi-power"></i>Déconnexion</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+   
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile header-mobile-2 d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                       <div class="account-wrap">
+                            <div class="account-item account-item--style2 clearfix js-item-menu">
+                                    
+                                 
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">
+                                   
+                                    <span class="acc">{{currentEntreprise.name}}</span></a>
+                                </div>
+                                <div class="entreprise-dropdown js-dropdown">
+                                    
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item" *ngFor="let entreprise of entreprises">
+                                            <a (click)="changeCurrentEntreprise(entreprise.id)">
+                                                <i class="fas fa-building"></i>{{entreprise.name}}</a>
+                                        </div>
+                                         
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="far fa-envelope"></i>Boite aux lettres</a>  
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li *ngIf="entreprises.length>1">   
+                                    <a routerLink="/letters/all">Tous les courriers</a>
+                                </li>
+                                <li *ngFor="let entreprise of entreprises">   
+                                    <a [routerLink]="['/letters',entreprise.id]">{{entreprise.name}}</a>
+                                </li>
+                                
+                            </ul>  
+                        </li>
+                        <li>
+                            <a routerLink="/documents">
+                                <i class="far fa-folder-open"></i>Documents</a>
+                        </li>
+                        
+                        <!--<li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-copy"></i>Modification statutaire</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a routerLink="/statutory">PV</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/statutory">Status</a>
+                                </li>
+                                <li>
+                                    <a routerLink="/statutory">PDG</a>
+                                </li>
+                            </ul>
+                        </li>-->
+                         <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="far fa-plus-square"></i>Ajouter une entreprise</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a routerLink="/domicilate/offres">Domicilier une entreprise</a>
+                                </li>
+                                <li>
+                                    <a >Créer une entreprise</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="sub-header-mobile-2 d-block d-lg-none">
+            <div class="header__tool">
+                <div class="header-button-item has-noti js-item-menu">
+                    <i class="zmdi zmdi-notifications"></i>
+                    <div class="account-dropdown notifi-dropdown--no-bor js-dropdown">
+                        <div class="notifi__title">
+                            <p>You have 3 Notifications</p>
+                        </div>
+                        <div class="notifi__item">
+                            <div class="bg-c1 img-cir img-40">
+                                <i class="zmdi zmdi-email-open"></i>
+                            </div>
+                            <div class="content">
+                                <p>You got a email notification</p>
+                                <span class="date">April 12, 2018 06:50</span>
+                            </div>
+                        </div>
+                        <div class="notifi__item">
+                            <div class="bg-c2 img-cir img-40">
+                                <i class="zmdi zmdi-account-box"></i>
+                            </div>
+                            <div class="content">
+                                <p>Your account has been blocked</p>
+                                <span class="date">April 12, 2018 06:50</span>
+                            </div>
+                        </div>
+                        <div class="notifi__item">
+                            <div class="bg-c3 img-cir img-40">
+                                <i class="zmdi zmdi-file-text"></i>
+                            </div>
+                            <div class="content">
+                                <p>You got a new file</p>
+                                <span class="date">April 12, 2018 06:50</span>
+                            </div>
+                        </div>
+                        <div class="notifi__footer">
+                            <a href="#">All notifications</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="account-wrap">
+                    <div class="account-item account-item--style2 clearfix js-item-menu">
+                        
+                        <div class="content">
+                            <a class="js-acc-btn" href="#">{{currentClient.firstname}}</a>
+                        </div>
+                        <div class="account-dropdown js-dropdown">
+                            <div class="info clearfix">
+                                        <div class="image">
+                                            <a href="#">
+                                                <img  />
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="name">
+                                                
+                                            </h5><br>
+                                            <span class="email">{{currentClient.firstname}}</span>
+                                        </div>
+                                    </div>
+                            <div class="account-dropdown__body">
+                                <div class="account-dropdown__item">
+                                            <a routerLink="/personal-profile">
+                                                <i class="zmdi zmdi-account"></i>Profil Personnel</a>
+                                        </div>
+                                        
+                                        <div class="account-dropdown__item">
+                                        <ul class="navbar-mobile__list list-unstyled">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-building"></i>Profil Entreprise</a>  
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li *ngFor="let entreprise of entreprises">
+                                    <a [routerLink]="['/entreprise-profile',entreprise.id]">{{entreprise.name}}</a>
+                                </li>
+                                
+                            </ul>  
+                        </li>
+                    </ul>
+                </div>
+                            </div>
+                            <div class="account-dropdown__footer">
+                                <a (click)="logOut()">
+                                    <i class="zmdi zmdi-power"></i>Déconnexion</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END HEADER MOBILE -->
+        <!-- BREADCRUMB-->
+            <section class="au-breadcrumb">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="au-breadcrumb-content">
+                                    <div class="au-breadcrumb-left">
+                                        <span class="au-breadcrumb-span">Vous etes ici:</span>
+                                        <ul class="list-unstyled list-inline au-breadcrumb__list">
+                                            <li class="list-inline-item active">
+                                                <a routerLink="/home">Acceuil</a>
+                                            </li>
+                                            <li class="list-inline-item seprate">
+                                                <span>/</span>
+                                            </li>
+                                            <li class="list-inline-item">Boite aux lettres</li>
+                                        </ul>
+                                    </div>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END BREADCRUMB-->

@@ -1,0 +1,116 @@
+<button class="back">
+  <i class="fas fa-arrow-left"></i>
+</button>
+
+<div class="stage">
+  
+  <div class="folder-wrap level-current scrolling topWrap">
+  	<div class="container">
+    <div class="row">
+
+    <div class="col tile folder topBills" (click)="getDocumentsByFeature({'key':'type','value':'bill'});changeCurrentForlder('bill');getYearList()">
+      <i class="fas fa-folder"></i>
+      <h3>Factures</h3>
+    </div><!-- .tile.folder -->
+    
+    <div class="col tile folder topEntDcs" (click)="getDocumentsByFeature({'key':'type','value':'entrepriseDoc'});changeCurrentForlder('entDocs');getYearList()">
+      <i class="fas fa-folder"></i>
+      <h3>Documents de ma societé</h3>
+    </div><!-- .tile.folder -->
+    
+    <div class="col tile folder topLetters" (click)="getDocumentsByFeature({'key':'type','value':'letter'});changeCurrentForlder('letters');getYearList()">
+      <i class="fas fa-folder"></i>
+      <h3>Courriers scannés</h3>
+    </div><!-- .tile.folder -->
+    </div>
+      
+  </div><!-- .folder-wrap -->
+  </div>
+  <div class="folder-wrap level-down yearBills">
+    <div class="container">
+       <div class="row" *ngIf="yearList.length>0">
+        <div class="col tile folder yb"  *ngFor="let year of yearList" (click)="getDocumentsByFeature({'key':'year','value':year});getMonthList()">
+          <i class="fas fa-folder"></i>
+          <h3>{{year}} bill</h3>
+          <p>{{filterDocs.length}} documents</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>  
+  </div><!-- .folder-wrap -->
+
+  <div class="folder-wrap level-down yearLetters">
+    <div class="container">
+    <div class="row" *ngIf="yearList.length>0">
+        <div class="col tile folder yl" *ngFor="let year of yearList" (click)="getDocumentsByFeature({'key':'year','value':year});getMonthList()">
+          <i class="fas fa-folder"></i>
+          <h3>{{year}} letters</h3>
+          <p>{{filterDocs.length}} documents</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>
+  </div><!-- .folder-wrap -->
+
+  
+
+<div class="folder-wrap monthBills">
+    <div class="container">
+      <div class="row">
+        <div class="col tile folder mb" *ngFor="let month of monthList" (click)="getDocumentsByFeature({'key':'month','value':month});">
+          <i class="fas fa-folder"></i>
+          <h3>{{month}}</h3>
+          <p>{{filterDocs.length}} documents</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>
+  </div><!-- .folder-wrap -->
+  <div class="folder-wrap monthLetters">
+    <div class="container">
+      <div class="row">
+        <div class="col tile folder ml" *ngFor="let month of monthList" (click)="getDocumentsByFeature({'key':'month','value':month});">
+          <i class="fas fa-folder"></i>
+          <h3>{{month}}</h3>
+          <p>{{filterDocs.length}} documents</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>
+  </div><!-- .folder-wrap -->
+
+  <div class="folder-wrap fileBills">
+    <div class="container">
+      <div class="row">
+        <div class="col tile folder fb" *ngFor="let doc of filterDocs" (click)="openFile(doc.id)">
+           <i class="fas fa-file"></i>
+          <h3>{{doc.name}}</h3>
+          <p>{{doc.day}}-{{doc.month}}-{{doc.year}}</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>
+  </div><!-- .folder-wrap --> 
+
+  <div class="folder-wrap fileLetters">
+    <div class="container">
+      <div class="row">
+        <div class="col tile folder fl" *ngFor="let doc of filterDocs" (click)="openFile(doc.id)">
+           <i class="fas fa-file"></i>
+          <h3>{{doc.name}}</h3>
+          <p>{{doc.day}}-{{doc.month}}-{{doc.year}}</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>
+  </div><!-- .folder-wrap --> 
+
+  <div class="folder-wrap fileEntDocs">
+    <div class="container">
+      <div class="row">
+        <div class="col tile folder fed" *ngFor="let doc of filterDocs" (click)="openFile(doc.id)">
+           <i class="fas fa-file"></i>
+          <h3>{{doc.name}}</h3>
+          <p>{{doc.day}}-{{doc.month}}-{{doc.year}}</p>
+        </div><!-- .tile.folder -->
+      </div>
+    </div>
+  </div><!-- .folder-wrap --> 
+   
+   
+  
+</div><!-- .stage -->

@@ -1,0 +1,109 @@
+
+/*dddddddddddddddddddddddddddddddddddddddddd
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+ 
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+
+
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/****************************************************/
+
+.containerWrap {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+
+.bottom {
+  transition: .5s ease;
+  height: 50%;
+
+  transform: translate(0%, -80%);
+  -ms-transform: translate(0%, -80%);
+  text-align: center;
+  background-color: #FD8F5F;
+  opacity: 0;
+}
+
+.containerWrap:hover .image {
+  background-color: #FD8F5F;
+  opacity: 0.3;
+}
+
+.containerWrap:hover .middle {
+  opacity: 1;
+}
+.containerWrap:hover .bottom {
+  opacity: 0.9;
+}
+
+.action  {
+  background-color: #FD8F5F;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-right: 2px #fff;
+   display: inline-block;
+}
+.text{
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 16px 32px;
+  border-right: 2px #fff;
+}
+
+.top{
+transition: .5s ease;
+  
+  position: absolute;
+  top: 0%;
+  
+  text-align: center;
+  display: inline-block;
+}
+.containerWrap:hover .top .delivred {
+  opacity: 1;
+}
+
